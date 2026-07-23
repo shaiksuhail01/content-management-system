@@ -5,6 +5,9 @@ const dotenv = require("dotenv");
 const connectDB = require("./config/db");
 const standardRoutes = require("./routes/standardRoutes");
 const authRoutes = require("./routes/authRoutes");
+const adminStandardRoutes = require(
+  "./routes/adminStandardRoutes"
+);
 
 const {
   notFound,
@@ -41,6 +44,8 @@ app.get("/api/v1/health", (req, res) => {
 // API routes
 app.use("/api/v1/standards", standardRoutes);
 app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/admin/standards", adminStandardRoutes);
+
 
 // Error handling - MUST remain after all routes
 app.use(notFound);
